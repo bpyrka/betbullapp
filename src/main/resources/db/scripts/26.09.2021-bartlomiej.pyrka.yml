@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - preConditions:
+  - runningAs:
+      username: bpyrka
+
+  - changeSet:
+      id: test
+      author: bpyrka
+      context: local
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: name
+                  name: name
+                  type: string
+              - column:
+                  header: last_name
+                  name: last_name
+                  type: string
+              - column:
+                  header: player_position
+                  name: player_position
+                  type: string
+              - column:
+                  header: months_of_experience
+                  name: months_of_experience
+                  type: numeric
+              - column:
+                  header: age
+                  name: age
+                  type: numeric
+            commentLineStartsWith: #
+            encoding: UTF-8
+            file: db/scripts/imports/players.csv
+            relativeToChangelogFile: false
+            separator: ;
+            tableName: player
+
+        - loadData:
+            columns:
+              - column:
+                  header: team_name
+                  name: team_name
+                  type: string
+              - column:
+                  header: TEAM_BUDGET
+                  name: TEAM_BUDGET
+                  type: numeric
+            commentLineStartsWith: #
+            encoding: UTF-8
+            file: db/scripts/imports/teams.csv
+            relativeToChangelogFile: false
+            separator: ;
+            tableName: team

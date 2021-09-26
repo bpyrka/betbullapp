@@ -1,0 +1,105 @@
+databaseChangeLog:
+  - preConditions:
+  - runningAs:
+      username: bpyrka
+  - changeSet:
+      id: 1
+      author: bpyrka
+      context: local
+      changes:
+        - createTable:
+            tableName: player
+            schemaName: betbull
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: player_pk
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: player_position
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: months_of_experience
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: age
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: team_id
+                  type: integer
+
+        - createTable:
+            tableName: team
+            schemaName: betbull
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: team_pk
+                    nullable: false
+              - column:
+                  name: team_name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: TEAM_BUDGET
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+              - createTable:
+                  tableName: player_history
+                  schemaName: betbull
+                  columns:
+                    - column:
+                        name: id
+                        type: serial
+                        autoIncrement: true
+                        constraints:
+                          primaryKey: true
+                          primaryKeyName: team_pk
+                          nullable: false
+                    - column:
+                        name: player_name
+                        type: varchar(100)
+                        constraints:
+                          nullable: false
+                    - column:
+                        name: player_last_name
+                        type: varchar(100)
+                        constraints:
+                          nullable: false
+                    - column:
+                        name: team_name
+                        type: varchar(100)
+                        constraints:
+                          nullable: false
+                    - column:
+                        name: transfer_date
+                        type: timestamp
+                        constraints:
+                          nullable: false

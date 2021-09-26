@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:betbull;DATABASE_TO_LOWER=TRUE;INIT=CREATE SCHEMA IF NOT EXISTS betbull;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: root
+    password: root
+    dbcp2:
+      default-schema: betbull
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    database: h2
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/changelog/changelog.yml
+    default-schema: betbull
+    contexts: local
+    enabled: true
+  h2:
+    console:
+      enabled: true
+      path: /console
+  sql:
+    init:
+      platform: h2
